@@ -42,8 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Challenge\AccessAttribute.cs" />
     <Compile Include="ClassAndMethods\Product.cs" />
     <Compile Include="ClassAndMethods\ProductItems.cs" />
+    <Compile Include="ClassAndMethods\ProductMain.cs" />
+    <Compile Include="Collections\DictionaryCollection.cs" />
+    <Compile Include="OO\Car.cs" />
+    <Compile Include="OO\Ferrari.cs" />
+    <Compile Include="OO\HeritageMain.cs" />
+    <Compile Include="OO\Onix.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
