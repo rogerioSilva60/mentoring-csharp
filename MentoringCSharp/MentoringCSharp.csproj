@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,7 +49,12 @@
     <Compile Include="ClassAndMethods\ProductItems.cs" />
     <Compile Include="ClassAndMethods\ProductMain.cs" />
     <Compile Include="Collections\DictionaryCollection.cs" />
+    <Compile Include="Exceptions\Account.cs" />
+    <Compile Include="Exceptions\ExceptionMain.cs" />
+    <Compile Include="Exceptions\NegativeException.cs" />
+    <Compile Include="Exceptions\OddException.cs" />
     <Compile Include="OO\Car.cs" />
+    <Compile Include="OO\Encapsulation.cs" />
     <Compile Include="OO\Ferrari.cs" />
     <Compile Include="OO\HeritageMain.cs" />
     <Compile Include="OO\Onix.cs" />

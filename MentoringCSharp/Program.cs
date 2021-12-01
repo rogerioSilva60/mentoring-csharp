@@ -1,4 +1,5 @@
 ﻿using MentoringCSharp.ClassAndMethods;
+using MentoringCSharp.Exceptions;
 using MentoringCSharp.OO;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace MentoringCSharp
     {
         public static void Main(string[] args)
         {
-            HeritageMain.Execute();
+            ExceptionMain.Execute();
         }
     }
 }
