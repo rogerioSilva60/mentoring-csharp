@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentoringCSharp", "MentoringCSharp\MentoringCSharp.csproj", "{EC0C396C-6DDE-4C44-970F-54C5085B560F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.WebAPI", "EFCore.WebAPI\EFCore.WebAPI.csproj", "{A807A69E-CD0E-4079-A3EB-B9BFE78A837C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EC0C396C-6DDE-4C44-970F-54C5085B560F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC0C396C-6DDE-4C44-970F-54C5085B560F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC0C396C-6DDE-4C44-970F-54C5085B560F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A807A69E-CD0E-4079-A3EB-B9BFE78A837C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A807A69E-CD0E-4079-A3EB-B9BFE78A837C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A807A69E-CD0E-4079-A3EB-B9BFE78A837C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A807A69E-CD0E-4079-A3EB-B9BFE78A837C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

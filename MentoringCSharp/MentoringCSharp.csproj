@@ -54,7 +54,6 @@
     <Compile Include="Exceptions\NegativeException.cs" />
     <Compile Include="Exceptions\OddException.cs" />
     <Compile Include="OO\Car.cs" />
-    <Compile Include="OO\Encapsulation.cs" />
     <Compile Include="OO\Ferrari.cs" />
     <Compile Include="OO\HeritageMain.cs" />
     <Compile Include="OO\Onix.cs" />
