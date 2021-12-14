@@ -5,17 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RestWithASPNET.Services.Implementations
+namespace RestWithASPNET.Repositories.implementations
 {
-    public class PersonServiceImplementation : IPersonService
+    public class PersonRepositoryImplementation : IPersonRepository
     {
         private SqlServerContext _context;
-
-        public PersonServiceImplementation(SqlServerContext context)
+        public PersonRepositoryImplementation(SqlServerContext context)
         {
             _context = context;
         }
-
         public List<Person> FindAll()
         {
             return _context.Persons.ToList();
@@ -33,7 +31,7 @@ namespace RestWithASPNET.Services.Implementations
                 _context.Add(person);
                 _context.SaveChanges();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -62,7 +60,7 @@ namespace RestWithASPNET.Services.Implementations
             if (Exists(person.Id))
             {
                 var oldPerson = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
-                if(oldPerson != null)
+                if (oldPerson != null)
                 {
                     try
                     {
@@ -75,13 +73,13 @@ namespace RestWithASPNET.Services.Implementations
                     }
                     return person;
                 }
-                
+
             }
 
             return null;
         }
 
-        private bool Exists(long id)
+        public bool Exists(long id)
         {
             return _context.Persons.Any(p => p.Id.Equals(id));
         }
