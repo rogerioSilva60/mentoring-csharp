@@ -1,3 +1,12 @@
 .vs
+Calculator.WebAPI/bin
+Calculator.WebAPI/obj
+
+EFCore.WebAPI/bin
+EFCore.WebAPI/obj
+
 MentoringCSharp/bin
 MentoringCSharp/obj
+
+RestWithASPNET/bin
+RestWithASPNET/obj
