@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestWithASPNET.Models.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,11 +9,9 @@ using System.Threading.Tasks;
 namespace RestWithASPNET.Models
 {
     [Table("person")]
-    public class Person
+    public class Person : BaseEntity
     {
-        [Key]
-        [Column("id")]
-        public long Id { get; set; }
+        
         [Column("first_name")]
         public string FirstName { get; set; }
         [Column("last_name")]
