@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RestWithASPNET.Models;
 using RestWithASPNET.Business;
+using RestWithASPNET.Data.VO;
 
 namespace RestWithASPNET.Controllers
 {
@@ -35,7 +35,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)
+        public IActionResult Post([FromBody] PersonVO person)
         {
             var newPerson = _personBusiness.Create(person);
             if (newPerson == null) return BadRequest();
@@ -43,7 +43,7 @@ namespace RestWithASPNET.Controllers
         }
         
         [HttpPut]
-        public IActionResult Put([FromBody] Person person)
+        public IActionResult Put([FromBody] PersonVO person)
         {
             var newPerson = _personBusiness.Update(person);
             if (newPerson == null) return BadRequest();
@@ -53,7 +53,7 @@ namespace RestWithASPNET.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            Person person = _personBusiness.FindById(id);
+            PersonVO person = _personBusiness.FindById(id);
             if (person == null) return NotFound();
             _personBusiness.Delete(id);
             return NoContent();

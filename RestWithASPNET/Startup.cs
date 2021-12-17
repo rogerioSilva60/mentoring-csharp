@@ -12,6 +12,7 @@ using System;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using RestWithASPNET.Repositories.Generic;
+using Microsoft.Net.Http.Headers;
 
 namespace RestWithASPNET
 {
@@ -43,6 +44,14 @@ namespace RestWithASPNET
             {
                 MigrateDataBase(connection);
             }
+
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true;
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+                options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+            })
+            .AddXmlSerializerFormatters();
 
             //Versioning API
             services.AddApiVersioning();

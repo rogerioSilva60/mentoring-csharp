@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithASPNET.Business;
+using RestWithASPNET.Data.VO;
 using RestWithASPNET.Models;
 
 namespace RestWithASPNET.Controllers
@@ -32,7 +33,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Book book)
+        public IActionResult Post([FromBody] BookVO book)
         {
             var newBook = _bookBusiness.Create(book);
             if (newBook == null) return BadRequest();
@@ -40,7 +41,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Book book)
+        public IActionResult Put([FromBody] BookVO book)
         {
             var newBook = _bookBusiness.Update(book);
             if (newBook == null) return BadRequest();
@@ -50,7 +51,7 @@ namespace RestWithASPNET.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            Book book = _bookBusiness.FindById(id);
+            BookVO book = _bookBusiness.FindById(id);
             if (book == null) return NotFound();
             _bookBusiness.Delete(id);
             return NoContent();
