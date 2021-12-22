@@ -13,6 +13,10 @@ using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using RestWithASPNET.Repositories.Generic;
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Rewrite;
+using System.Reflection;
+using System.IO;
 
 namespace RestWithASPNET
 {
@@ -56,6 +60,26 @@ namespace RestWithASPNET
             //Versioning API
             services.AddApiVersioning();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Rest API's with ASP.NET5",
+                        Version = "v1",
+                        Description = "API RESTful developed",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Rogerio Araujo",
+                            Url = new Uri("https://github.com/rogerioSilva60")
+                        }
+                    });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
             //Dependency Injection
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
             services.AddScoped<IBookBusiness, BookBusinessImplementation>();
@@ -73,6 +97,17 @@ namespace RestWithASPNET
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rest API's with ASP.NET5");
+            });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
 
             app.UseAuthorization();
 
