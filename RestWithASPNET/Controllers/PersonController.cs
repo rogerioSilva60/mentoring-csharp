@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using RestWithASPNET.Business;
 using RestWithASPNET.Data.VO;
+using RestWithASPNET.Hypermedia.Filters;
 using System.Collections.Generic;
 
 namespace RestWithASPNET.Controllers
@@ -21,6 +22,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
@@ -32,6 +34,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpGet("get-by-name")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult<string> GetByName(string name)
         {
             //var person = _personBusiness.FindById(id);
@@ -40,6 +43,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult<PersonVO> GetById(long id)
         {
             var person = _personBusiness.FindById(id);
@@ -48,6 +52,7 @@ namespace RestWithASPNET.Controllers
         }
         
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody] PersonVO person)
         {
             var newPerson = _personBusiness.Create(person);
@@ -56,6 +61,7 @@ namespace RestWithASPNET.Controllers
         }
         
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody] PersonVO person)
         {
             var newPerson = _personBusiness.Update(person);

@@ -17,6 +17,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Rewrite;
 using System.Reflection;
 using System.IO;
+using RestWithASPNET.Hypermedia.Filters;
+using RestWithASPNET.Hypermedia.Enricher;
 
 namespace RestWithASPNET
 {
@@ -56,6 +58,11 @@ namespace RestWithASPNET
                 options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
             })
             .AddXmlSerializerFormatters();
+
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ContenResponseEnricherList.Add(new PersonEnricher());
+
+            services.AddSingleton(filterOptions);
 
             //Versioning API
             services.AddApiVersioning();
@@ -114,6 +121,7 @@ namespace RestWithASPNET
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi", "{controller}");
             });
         }
 
