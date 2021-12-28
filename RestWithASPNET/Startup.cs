@@ -40,6 +40,13 @@ namespace RestWithASPNET
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
+
             services.AddControllers();
 
             var connection = Configuration.GetConnectionString("MyConnection");
@@ -104,6 +111,8 @@ namespace RestWithASPNET
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseSwagger();
 
