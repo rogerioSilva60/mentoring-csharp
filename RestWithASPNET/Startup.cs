@@ -4,14 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RestWithASPNET.Models.Context;
-using RestWithASPNET.Business;
-using RestWithASPNET.Business.Implementations;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
-using RestWithASPNET.Repositories.Generic;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Rewrite;
@@ -19,16 +16,19 @@ using System.Reflection;
 using System.IO;
 using RestWithASPNET.Hypermedia.Filters;
 using RestWithASPNET.Hypermedia.Enricher;
-using RestWithASPNET.Services.impl;
-using RestWithASPNET.Services;
-using RestWithASPNET.Repositories.impl;
-using RestWithASPNET.Repositories;
 using RestWithASPNET.Configurations;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using RestWithASPNET.Business;
+using RestWithASPNET.Business.Implementations;
+using RestWithASPNET.Services;
+using RestWithASPNET.Services.impl;
+using RestWithASPNET.Repositories.impl;
+using RestWithASPNET.Repositories;
+using RestWithASPNET.Repositories.Generic;
 
 namespace RestWithASPNET
 {
@@ -132,6 +132,28 @@ namespace RestWithASPNET
                             Url = new Uri("https://github.com/rogerioSilva60")
                         }
                     });
+
+                var jwtSecurityScheme = new OpenApiSecurityScheme
+                {
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    Name = "JWT Authentication",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Description = "Put **_ONLY_** your JWT Bearer token on textbox below!",
+
+                    Reference = new OpenApiReference
+                    {
+                        Id = JwtBearerDefaults.AuthenticationScheme,
+                        Type = ReferenceType.SecurityScheme
+                    }
+                };
+
+                c.AddSecurityDefinition("Bearer", jwtSecurityScheme);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    { jwtSecurityScheme, Array.Empty<string>() }
+                });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
