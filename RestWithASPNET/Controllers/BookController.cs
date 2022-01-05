@@ -7,7 +7,7 @@ namespace RestWithASPNET.Controllers
 {
     [ApiVersion("1")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/books")]
     public class BookController  : ControllerBase
     {
         private IBookBusiness _bookBusiness;

@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestWithASPNET.Models.Context
 {
@@ -16,5 +11,14 @@ namespace RestWithASPNET.Models.Context
         public DbSet<Person> Persons { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<User> Users { get; set; }
-    }
+        public DbSet<Author> Authors { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>()
+                .HasOne(b => b.Author)
+                .WithMany(a => a.Books)
+                .HasForeignKey(b => b.AuthorId);
+        }
+}
 }

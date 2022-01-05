@@ -22,7 +22,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpPost]
-        public IActionResult Signin([FromBody] UserVO user)
+        public IActionResult create([FromBody] UserVO user)
         {
             if (user == null) return BadRequest("Invalid user request");
             if (!_userBusiness.Create(user)) return BadRequest("Failed to register the user");

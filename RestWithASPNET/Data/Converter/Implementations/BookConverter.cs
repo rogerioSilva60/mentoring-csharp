@@ -1,10 +1,8 @@
 ﻿using RestWithASPNET.Data.Converter.Contract;
 using RestWithASPNET.Data.VO;
 using RestWithASPNET.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestWithASPNET.Data.Converter.Implementations
 {
@@ -16,10 +14,10 @@ namespace RestWithASPNET.Data.Converter.Implementations
             return new Book
             {
                 Id = origin.Id,
-                Author = origin.Author,
                 LaunchDate = origin.LaunchDate,
                 Price = origin.Price,
-                Title = origin.Title
+                Title = origin.Title,
+                Author = new AuthorConverter().Parse(origin.Author)
             };
         }
 
@@ -29,10 +27,10 @@ namespace RestWithASPNET.Data.Converter.Implementations
             return new BookVO
             {
                 Id = origin.Id,
-                Author = origin.Author,
                 LaunchDate = origin.LaunchDate,
                 Price = origin.Price,
-                Title = origin.Title
+                Title = origin.Title,
+                Author = new AuthorConverter().Parse(origin.Author)
             };
         }
 

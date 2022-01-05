@@ -169,6 +169,7 @@ namespace RestWithASPNET
             services.AddTransient<ITokenService, TokenService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
             
             services.AddScoped(typeof(IRepository<>),typeof(GenericRepository<>));
             
