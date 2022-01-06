@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.WebAPI", "EFCore.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.WebAPI", "Calculator.WebAPI\Calculator.WebAPI.csproj", "{4C1478CE-F84A-4C4F-AA9E-1C81636B005A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWithASPNET", "RestWithASPNET\RestWithASPNET.csproj", "{4F6A65FF-5626-48E4-AE6D-B66AA872F4F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestWithASPNET", "RestWithASPNET\RestWithASPNET.csproj", "{4F6A65FF-5626-48E4-AE6D-B66AA872F4F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWithASPNET.Test", "RestWithASPNET.Test\RestWithASPNET.Test.csproj", "{894077FA-360B-4318-A9AE-461F1EFCBD1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4F6A65FF-5626-48E4-AE6D-B66AA872F4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F6A65FF-5626-48E4-AE6D-B66AA872F4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F6A65FF-5626-48E4-AE6D-B66AA872F4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894077FA-360B-4318-A9AE-461F1EFCBD1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894077FA-360B-4318-A9AE-461F1EFCBD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894077FA-360B-4318-A9AE-461F1EFCBD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894077FA-360B-4318-A9AE-461F1EFCBD1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -54,12 +54,13 @@ namespace RestWithASPNET.Controllers
         }
         
         [HttpPost]
+        [ProducesResponseType((201), Type = typeof(PersonVO))]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Post([FromBody] PersonVO person)
+        public ActionResult<PersonVO> Post([FromBody] PersonVO person)
         {
             var newPerson = _personBusiness.Create(person);
             if (newPerson == null) return BadRequest();
-            return Ok(newPerson);
+            return CreatedAtAction("GetById", new { id = newPerson.Id } ,newPerson);
         }
         
         [HttpPut]

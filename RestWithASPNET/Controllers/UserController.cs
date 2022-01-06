@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RestWithASPNET.Business.Implementations;
 using RestWithASPNET.Data.VO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestWithASPNET.Controllers
 {
@@ -22,7 +17,7 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpPost]
-        public IActionResult create([FromBody] UserVO user)
+        public ActionResult<UserVO> Create([FromBody] UserVO user)
         {
             if (user == null) return BadRequest("Invalid user request");
             if (!_userBusiness.Create(user)) return BadRequest("Failed to register the user");
