@@ -2,6 +2,7 @@
 using RestWithASPNET.Business;
 using RestWithASPNET.Data.VO;
 using RestWithASPNET.Models;
+using System.Collections.Generic;
 
 namespace RestWithASPNET.Controllers
 {
@@ -18,14 +19,14 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<List<BookVO>> Get()
         {
             var books = _bookBusiness.FindAll();
             return Ok(books);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(long id)
+        public ActionResult<BookVO> GetById(long id)
         {
             var book = _bookBusiness.FindById(id);
             if (book == null) return NotFound();
@@ -33,17 +34,17 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] BookVO book)
+        public ActionResult<BookVO> Post([FromBody] BookResumeVO book)
         {
-            var newBook = _bookBusiness.Create(book);
+            BookVO newBook = _bookBusiness.Create(book);
             if (newBook == null) return BadRequest();
             return Ok(newBook);
         }
 
-        [HttpPut]
-        public IActionResult Put([FromBody] BookVO book)
+        [HttpPut("{id}")]
+        public ActionResult<BookVO> Put(long id, [FromBody] BookResumeVO book)
         {
-            var newBook = _bookBusiness.Update(book);
+            BookVO newBook = _bookBusiness.Update(id, book);
             if (newBook == null) return BadRequest();
             return Ok(newBook);
         }

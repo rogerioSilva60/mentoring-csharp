@@ -8,5 +8,9 @@ namespace RestWithASPNET.Repositories
         List<Book> FindAll();
         
         Book FindById(long id);
+
+        Book Update(long id, Book book);
+
+        Book Create(Book book);
     }
 }

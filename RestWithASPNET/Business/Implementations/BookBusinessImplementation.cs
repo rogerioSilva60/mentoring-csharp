@@ -11,21 +11,30 @@ namespace RestWithASPNET.Business.Implementations
     {
         private readonly IRepository<Book> _repository;
         private readonly BookConverter _converter;
+        private readonly BookResumeConverter _bookResumeConverter;
         private readonly IBookRepository _bookRepository;
 
         public BookBusinessImplementation(IRepository<Book> repository, IBookRepository bookRepository)
         {
             _repository = repository;
-            _converter = new BookConverter();
             _bookRepository = bookRepository;
+            _converter = new BookConverter();
+            _bookResumeConverter = new BookResumeConverter();
         }
 
-        public BookVO Create(BookVO book)
+        public BookVO Create(BookResumeVO book)
         {
-            Book bookEntity = _converter.Parse(book);
-            bookEntity = _repository.Create(bookEntity);
+            Book bookEntity = _bookResumeConverter.Parse(book);
+            bookEntity = _bookRepository.Create(bookEntity);
             BookVO bookVo = _converter.Parse(bookEntity);
             return bookVo;
+        }
+
+        public BookVO Update(long id, BookResumeVO book)
+        {
+            var bookEntity = _bookResumeConverter.Parse(book);
+            bookEntity = _bookRepository.Update(id, bookEntity);
+            return _converter.Parse(bookEntity);
         }
 
         public void Delete(long id)
@@ -35,7 +44,6 @@ namespace RestWithASPNET.Business.Implementations
 
         public List<BookVO> FindAll()
         {
-            //_converter.Parse(_repository.FindAll());
             return _converter.Parse(_bookRepository.FindAll());
         }
 
@@ -43,13 +51,6 @@ namespace RestWithASPNET.Business.Implementations
         {
             var book = _converter.Parse(_bookRepository.FindById(id));
             return book;
-        }
-
-        public BookVO Update(BookVO book)
-        {
-            var bookEntity = _converter.Parse(book);
-            bookEntity = _repository.Update(bookEntity);
-            return _converter.Parse(bookEntity);
         }
     }
 }

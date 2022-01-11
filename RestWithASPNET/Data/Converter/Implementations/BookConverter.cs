@@ -11,14 +11,19 @@ namespace RestWithASPNET.Data.Converter.Implementations
         public Book Parse(BookVO origin)
         {
             if(origin == null) return null;
-            return new Book
+            var book = new Book
             {
-                Id = origin.Id,
+                Id =(long) origin.Id,
                 LaunchDate = origin.LaunchDate,
                 Price = origin.Price,
-                Title = origin.Title,
-                Author = new AuthorConverter().Parse(origin.Author)
+                Title = origin.Title
             };
+
+            if(origin.Author != null)
+            {
+                book.AuthorId = origin.Author.Id;
+            }
+            return book;
         }
 
         public BookVO Parse(Book origin)
@@ -30,7 +35,7 @@ namespace RestWithASPNET.Data.Converter.Implementations
                 LaunchDate = origin.LaunchDate,
                 Price = origin.Price,
                 Title = origin.Title,
-                Author = new AuthorConverter().Parse(origin.Author)
+                Author = origin.Author == null ? null : new AuthorBookConverter().Parse(origin.Author)
             };
         }
 
