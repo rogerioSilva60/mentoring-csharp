@@ -13,3 +13,27 @@ RestWithASPNET/obj
 
 RestWithASPNET.Test/bin
 RestWithASPNET.Test/obj
+
+Web/RestWithASPNET.Web/.DS_Store
+Web/RestWithASPNET.Web/node_modules
+Web/RestWithASPNET.Web/dist
+
+
+# local env files
+Web/RestWithASPNET.Web/.env.local
+Web/RestWithASPNET.Web/.env.*.local
+
+# Log files
+Web/RestWithASPNET.Web/npm-debug.log*
+Web/RestWithASPNET.Web/yarn-debug.log*
+Web/RestWithASPNET.Web/yarn-error.log*
+Web/RestWithASPNET.Web/pnpm-debug.log*
+
+# Editor directories and files
+Web/RestWithASPNET.Web/.idea
+Web/RestWithASPNET.Web/.vscode
+Web/RestWithASPNET.Web/*.suo
+Web/RestWithASPNET.Web/*.ntvs*
+Web/RestWithASPNET.Web/*.njsproj
+Web/RestWithASPNET.Web/*.sln
+Web/RestWithASPNET.Web/*.sw?

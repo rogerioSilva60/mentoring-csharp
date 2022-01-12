@@ -15,6 +15,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWithASPNET.Test", "Rest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOLID", "SOLID\SOLID.csproj", "{AF5E2358-9F42-4956-B356-BB2D4C990427}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{34D79BF9-F913-4640-8422-AF94511CA5D7}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RestWithASPNET.Web", "Web\RestWithASPNET.Web\", "{A34CDD83-A468-4B39-9DA0-6A5310E2AECD}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61898"
+		Debug.AspNetCompiler.PhysicalPath = "Web\RestWithASPNET.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61898\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_61898"
+		Release.AspNetCompiler.PhysicalPath = "Web\RestWithASPNET.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61898\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "61898"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +67,16 @@ Global
 		{AF5E2358-9F42-4956-B356-BB2D4C990427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF5E2358-9F42-4956-B356-BB2D4C990427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF5E2358-9F42-4956-B356-BB2D4C990427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34CDD83-A468-4B39-9DA0-6A5310E2AECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34CDD83-A468-4B39-9DA0-6A5310E2AECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34CDD83-A468-4B39-9DA0-6A5310E2AECD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34CDD83-A468-4B39-9DA0-6A5310E2AECD}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A34CDD83-A468-4B39-9DA0-6A5310E2AECD} = {34D79BF9-F913-4640-8422-AF94511CA5D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75E4A963-A9B4-402E-8839-A00B2BD4EE90}
