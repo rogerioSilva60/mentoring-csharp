@@ -12,6 +12,6 @@ namespace RestWithASPNET.Data.VO
         public string  Name { get; set; }
         public string Cpf { get; set; }
 
-        public ICollection<BookVO> Books { get; set; }
+        public List<BookAuthorVO> Books { get; set; }
     }
 }

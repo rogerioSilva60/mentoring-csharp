@@ -12,6 +12,6 @@ namespace RestWithASPNET.Models
         [Column("cpf")]
         public string Cpf { get; set; }
 
-        public ICollection<Book> Books { get; set; }
+        public List<Book> Books { get; set; }
     }
 }

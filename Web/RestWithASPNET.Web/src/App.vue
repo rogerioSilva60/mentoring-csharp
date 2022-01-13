@@ -26,6 +26,15 @@
               <h5>Price</h5>
               <InputNumber id="price" v-model="price" />
             </span>
+            <span class="p-field">
+              <h5>Authors</h5>
+              <Dropdown 
+                v-model="selectedAuthor" 
+                :options="optionsAuthors" 
+                optionLabel="name"  
+                placeholder="Select a Author" 
+              />
+            </span>
           </div> 
           <div class="d-button">
             <Button label="Save" @click="save"/>
@@ -47,6 +56,7 @@
 
 <script>
 import BookService from './services/BookService';
+import AuthorService from './services/AuthorService';
 import items from './data/menu';
 import books from './data/book';
 
@@ -58,22 +68,40 @@ export default {
       price: null,
       items: items,
       books: books,
-      bookList : []
+      bookList : [],
+      optionsAuthors: [],
+      selectedAuthor: null
     }
   },
-  bookService:null,
+  bookService: null,
+  authorService: null,
   created() {
     this.bookService = new BookService();
+    this.authorService = new AuthorService();
   },
   async mounted() {
-    await this.search();
+    console.log('inicio');
+    await this.requestGetAuthors();
+    await this.requestGetBooks();
+    console.log('fim');
   },
   methods: {
-    async search() {
+    async save() {
+      let book = {
+        'title': this.title,
+        'price': this.price
+      };
+      if(this.selectedAuthor) {
+        book.author = {
+          'id': this.selectedAuthor.id
+        };
+      }
+      await this.requestPostBook(book);
+    },
+    async requestGetBooks() {
       await this.bookService.getBooks()
         .then(response => {
           let data = response.data;
-          console.log(data);
           this.bookList = [];
           data.forEach(book => {
             let bookLocal = {...book};
@@ -85,9 +113,27 @@ export default {
           console.log('Ocorreu um erro!');
         });
     },
-    save() {
-      console.log(this.title);
-      console.log(this.price);
+    async requestGetAuthors() {
+      await this.authorService.getAuthors()
+        .then(response => {
+          let data = response.data;
+          this.optionsAuthors= [...data];
+        })
+        .catch(() => {
+          this.optionsAuthors=[];
+        })
+    },
+    async requestPostBook(book = {}) {
+      await this.bookService.postBooks(book)
+        .then(response => {
+          if(response.status === 200) {
+            // let data = response.data;
+            this.requestGetBooks();
+          }
+        })
+        .catch(() => {
+          console.log('error')
+        })
     }
   }
 }

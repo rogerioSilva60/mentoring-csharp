@@ -165,11 +165,13 @@ namespace RestWithASPNET
             services.AddScoped<IBookBusiness, BookBusinessImplementation>();
             services.AddScoped<ILoginBusiness, LoginBusinessImplementation>();
             services.AddScoped<IUserBusiness, UserBusinessImplementation>();
+            services.AddScoped<IAuthorBusiness, AuthorBusinessImplementation>();
 
             services.AddTransient<ITokenService, TokenService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
             
             services.AddScoped(typeof(IRepository<>),typeof(GenericRepository<>));
             

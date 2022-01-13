@@ -2,6 +2,7 @@
 using RestWithASPNET.Business;
 using RestWithASPNET.Data.VO;
 using RestWithASPNET.Models;
+using System;
 using System.Collections.Generic;
 
 namespace RestWithASPNET.Controllers
@@ -36,9 +37,10 @@ namespace RestWithASPNET.Controllers
         [HttpPost]
         public ActionResult<BookVO> Post([FromBody] BookResumeVO book)
         {
+            book.LaunchDate = DateTime.Now;
             BookVO newBook = _bookBusiness.Create(book);
             if (newBook == null) return BadRequest();
-            return Ok(newBook);
+            return CreatedAtAction("GetById", new { id = newBook.Id }, newBook);
         }
 
         [HttpPut("{id}")]

@@ -13,6 +13,7 @@ import InputNumber from 'primevue/inputnumber';
 import Card from 'primevue/card';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import Dropdown from 'primevue/dropdown';
 
 
 const app = createApp(App);
@@ -26,5 +27,6 @@ app.component('InputNumber', InputNumber);
 app.component('Card', Card);
 app.component('DataTable', DataTable);
 app.component('Column', Column);
+app.component('Dropdown', Dropdown);
 
 app.mount('#app')
