@@ -17,7 +17,7 @@ RestWithASPNET.Test/obj
 Web/RestWithASPNET.Web/.DS_Store
 Web/RestWithASPNET.Web/node_modules
 Web/RestWithASPNET.Web/dist
-
+Web/RestWithASPNET.Web/package-lock.json
 
 # local env files
 Web/RestWithASPNET.Web/.env.local
