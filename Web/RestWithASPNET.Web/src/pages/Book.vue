@@ -1,15 +1,15 @@
 <template>
-    <Toast />
-    <Dialog header="Confirmation" v-model:visible="displayConfirmation" :style="{width: '350px'}" :modal="true">
-      <div class="confirmation-content">
-          <i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
-          <span>Are you sure you want to proceed?</span>
-      </div>
-      <template #footer>
-          <Button label="No" icon="pi pi-times" @click="cancelBook" class="p-button-text"/>
-          <Button label="Yes" icon="pi pi-check" @click="deleteBook" class="p-button-text" autofocus />
-      </template>
-  </Dialog>
+	<Toast />
+	<Dialog header="Confirmation" v-model:visible="displayConfirmation" :style="{width: '350px'}" :modal="true">
+		<div class="confirmation-content">
+			<i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
+			<span>Are you sure you want to proceed?</span>
+		</div>
+		<template #footer>
+			<Button label="No" icon="pi pi-times" @click="cancelBook" class="p-button-text"/>
+			<Button label="Yes" icon="pi pi-check" @click="deleteBook" class="p-button-text" autofocus />
+		</template>
+	</Dialog>
   <div class="content">
     <div class="card-content">
       <Card>
@@ -32,13 +32,34 @@
             </span>
             <span class="p-field">
               <h5>Authors</h5>
-              <Dropdown 
+              <!--<Dropdown 
                 v-model="selectedAuthor" 
                 :options="optionsAuthors" 
                 optionLabel="name"  
                 placeholder="Select a Author" 
-                @change="teste"
-              />
+              />-->
+              <Dropdown 
+								v-model="selectedAuthor" 
+								:options="optionsAuthors" 
+								optionLabel="name" 
+								:filter="true" 
+								placeholder="Select a Author" 
+								:showClear="true"
+							>
+								<template #value="slotProps">
+									<div class="country-item country-item-value" v-if="slotProps.value">
+										<div>{{slotProps.value.name}}</div>
+									</div>
+									<span v-else>
+										{{slotProps.placeholder}}
+									</span>
+								</template>
+								<template #option="slotProps">
+									<div class="country-item">
+										<div>{{slotProps.option.name}}</div>
+									</div>
+								</template>
+            </Dropdown>
             </span>
           </div> 
           <div class="d-button">
@@ -156,12 +177,14 @@ export default {
       this.id = data.id;
       let author = {...data.author};
       if(author.name !== '-') {
-        this.selectedAuthor = {...author};
+        this.selectedAuthor = {
+            id: author.id,
+            name: author.name    
+        };
+      } else {
+          this.selectedAuthor = null;
       }
       this.isSave = false;
-    },
-    teste() {
-       console.log(this.selectedAuthor);
     },
     confirmDeleteBook(value) {
       this.id = value;
@@ -190,8 +213,7 @@ export default {
             this.optionsAuthors = [];
             this.optionsAuthors.push({
               id: author.id,
-              name: author.name,
-              cpf: author.name
+              name: author.name
             })
           });
           console.log(this.optionsAuthors)
