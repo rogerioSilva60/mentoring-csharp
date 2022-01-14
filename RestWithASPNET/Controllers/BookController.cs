@@ -46,6 +46,7 @@ namespace RestWithASPNET.Controllers
         [HttpPut("{id}")]
         public ActionResult<BookVO> Put(long id, [FromBody] BookResumeVO book)
         {
+            book.LaunchDate = DateTime.Now;
             BookVO newBook = _bookBusiness.Update(id, book);
             if (newBook == null) return BadRequest();
             return Ok(newBook);
