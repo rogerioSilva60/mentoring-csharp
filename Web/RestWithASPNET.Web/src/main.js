@@ -15,11 +15,14 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Dropdown from 'primevue/dropdown';
 import Dialog from 'primevue/dialog';
+import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
 
 
 const app = createApp(App);
 
 app.use(PrimeVue);
+app.use(ToastService);
 
 app.component('Button', Button);
 app.component('InputText', InputText);
@@ -30,5 +33,6 @@ app.component('DataTable', DataTable);
 app.component('Column', Column);
 app.component('Dropdown', Dropdown);
 app.component('Dialog', Dialog);
+app.component('Toast', Toast);
 
 app.mount('#app')
