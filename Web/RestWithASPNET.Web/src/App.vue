@@ -6,7 +6,7 @@
       </template>
     </Menubar>
   </div>
-  <Book />
+  <router-view />
   <!--<template v-if="isBook">
     <Book />
   </template>
@@ -16,16 +16,16 @@
 </template>
 
 <script>
-import Book from './pages/Book.vue';
+//import Book from './pages/Book.vue';
 import items from './data/menu';
 //import Author from './pages/Author.vue';
 
   export default {
     name: 'App',
-    components: {
-      Book//,
-      //Author
-    },
+    // components: {
+    //   Book//,
+    //   //Author
+    // },
     data() {
       return {
         items,

@@ -216,7 +216,6 @@ export default {
               name: author.name
             })
           });
-          console.log(this.optionsAuthors)
         })
         .catch(() => {
           this.optionsAuthors=[];
@@ -240,7 +239,6 @@ export default {
           this.showSuccess();
         })
         .catch(() => {
-          console.log('error');
           this.showError();
         })
     },
@@ -251,7 +249,6 @@ export default {
           this.showSuccess();
         })
         .catch(() => {
-          console.log('error');
           this.showError();
         })
     }
