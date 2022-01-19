@@ -209,8 +209,8 @@ export default {
       await this.authorService.getAuthors()
         .then(response => {
           let data = response.data;
+          this.optionsAuthors = [];
           data.forEach(author => {
-            this.optionsAuthors = [];
             this.optionsAuthors.push({
               id: author.id,
               name: author.name

@@ -9,10 +9,10 @@ using System.Collections.Generic;
 namespace RestWithASPNET.Controllers
 {
     [ApiVersion("1")]
-    [ApiController]
+    //[ApiController]
     [Authorize("Bearer")]
-    [Route("api/v{version:apiVersion}/persons")]
-    public class PersonController : ControllerBase
+    //[Route("api/v{version:apiVersion}/persons")]
+    public class PersonController : IPersonController
     {
         private readonly ILogger<PersonController> _logger;
         private IPersonBusiness _personBusiness;
@@ -72,12 +72,7 @@ namespace RestWithASPNET.Controllers
             return Ok(newPerson);
         }
 
-        /// <summary>
-        /// Deletes a specific PersonItem.
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
+        public override ActionResult Delete(long id)
         {
             PersonVO person = _personBusiness.FindById(id);
             if (person == null) return NotFound();

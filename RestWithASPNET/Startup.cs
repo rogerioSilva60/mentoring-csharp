@@ -29,6 +29,7 @@ using RestWithASPNET.Services.impl;
 using RestWithASPNET.Repositories.impl;
 using RestWithASPNET.Repositories;
 using RestWithASPNET.Repositories.Generic;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace RestWithASPNET
 {
@@ -157,6 +158,11 @@ namespace RestWithASPNET
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;
+                //var applicationName = PlatformServices.Default.Application.ApplicationName;
+                //var xmlDocumentPath = Path.Combine(applicationBasePath, $"{applicationName}.xml");
+                //var xmlPath2 =  System.String.Format(@"{0}\bin\Debug\net5.0\RestWithASPNET.xml", 
+                //    System.AppDomain.CurrentDomain.BaseDirectory);
                 c.IncludeXmlComments(xmlPath);
             });
 

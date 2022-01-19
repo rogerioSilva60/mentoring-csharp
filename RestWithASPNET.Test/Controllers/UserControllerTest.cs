@@ -35,10 +35,9 @@ namespace RestWithASPNET.Test.Controllers
             };
 
             var userController = UserController();
-
-            //Action
             _mockUserBusiness.Setup(x => x.Create(user)).Returns(true).Verifiable();
 
+            //Action
             ActionResult<UserVO> response = userController.Create(user);
             OkResult result =(OkResult) response.Result;
 
@@ -82,6 +81,7 @@ namespace RestWithASPNET.Test.Controllers
             BadRequestObjectResult result = (BadRequestObjectResult)response.Result;
 
             //Assert
+            Assert.Equal(400, result.StatusCode);
             Assert.Equal("Failed to register the user", result.Value);
         }
     }
