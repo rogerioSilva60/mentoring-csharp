@@ -71,10 +71,38 @@
     </div>
     
     <div class="d-datatable">
-      <DataTable :value="books" :scrollable="true" scrollHeight="400px" responsiveLayout="scroll">
-        <Column field="id" header="ID"></Column>
-        <Column field="title" header="Title"></Column>
-        <Column field="price" header="Price"></Column>
+      <DataTable 
+        :value="books" 
+        :scrollable="true" 
+        scrollHeight="400px" 
+        responsiveLayout="scroll"
+        filterDisplay="menu"
+        v-model:filters="filters"
+      >
+        <Column field="id" header="ID" :sortable="true"></Column>
+        <Column 
+          field="title" 
+          filterField="title"
+          :sortable="true" 
+          :showFilterMatchModes="false"
+          header="Title"
+        >
+          <template #filter="{filterModel}">
+              <div class="mb-3 font-bold">Title</div>
+              <InputText v-model="filterModel.value"/>
+          </template>
+        </Column>
+        <Column 
+          field="price" 
+          header="Price"
+          filterField="price" 
+          :showFilterMatchModes="false"  
+        >
+          <template #filter="{filterModel}">
+              <div class="mb-3 font-bold">Price</div>
+              <InputText v-model="filterModel.value"/>
+          </template>
+        </Column>
         <Column field="author.name" header="Author"></Column>
         <Column :exportable="false">
           <template #body="slotProps">
@@ -91,6 +119,7 @@
 </template>
 
 <script>
+import { FilterMatchMode } from 'primevue/api';
 import BookService from '../services/BookService';
 import AuthorService from '../services/AuthorService';
 
@@ -106,7 +135,8 @@ export default {
       optionsAuthors: [],
       selectedAuthor:null,
       isSave: true,
-      displayConfirmation: false
+      displayConfirmation: false,
+      filters: []
     }
   },
   bookService: null,
@@ -114,12 +144,19 @@ export default {
   created() {
     this.bookService = new BookService();
     this.authorService = new AuthorService();
+    this.filters = this.initFilters();
   },
   async mounted() {
     await this.requestGetAuthors();
     await this.requestGetBooks();
   },
   methods: {
+    initFilters() {
+      return {
+        'title': { value: null, matchMode: FilterMatchMode.CONTAINS },
+        'price': { value: null, matchMode: FilterMatchMode.CONTAINS },
+      };
+    },
     showSuccess() {
         this.$toast.add({severity:'success', summary: 'Success Message', detail:'Message Content', life: 3000});
     },

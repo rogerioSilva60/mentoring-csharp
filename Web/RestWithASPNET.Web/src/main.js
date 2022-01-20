@@ -19,6 +19,8 @@ import Dropdown from 'primevue/dropdown';
 import Dialog from 'primevue/dialog';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
+import Toolbar from 'primevue/toolbar';
+import FileUpload from 'primevue/fileupload';
 
 
 const app = createApp(App);
@@ -37,5 +39,7 @@ app.component('Column', Column);
 app.component('Dropdown', Dropdown);
 app.component('Dialog', Dialog);
 app.component('Toast', Toast);
+app.component('Toolbar', Toolbar);
+app.component('FileUpload', FileUpload);
 
 app.mount('#app')
